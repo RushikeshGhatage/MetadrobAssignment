@@ -329,7 +329,7 @@ const loadRobotExpressive = (): Promise<void> => {
 			'/assets/',
 			'RobotExpressive.glb',
 			scene,
-			(meshes, particleSystems, skeleton, animationGroups) => {
+			(meshes, _particleSystems, _skeleton, animationGroups) => {
 				console.log('Expressive Robot model loaded successfully!');
 				robotExpressiveModel = meshes[0];
 				robotExpressiveModel.position = new BABYLON.Vector3(
@@ -341,7 +341,7 @@ const loadRobotExpressive = (): Promise<void> => {
 				meshArray.push(robotExpressiveModel);
 				console.log(meshArray);
 
-				animationGroups.forEach((value, index) => {
+				animationGroups.forEach((_value, index) => {
 					animationGroups[index].stop();
 				});
 
@@ -371,7 +371,7 @@ const loadFox = (): Promise<void> => {
 			'/assets/',
 			'Fox.glb',
 			scene,
-			(meshes, particleSystems, skeleton, animationGroups) => {
+			(meshes, _particleSystems, _skeleton, animationGroups) => {
 				foxModel = meshes[0];
 				foxModel.position = new BABYLON.Vector3(0.0, -2.0, 0.0);
 				foxModel.scaling = new BABYLON.Vector3(0.05, 0.05, 0.05);
@@ -380,7 +380,7 @@ const loadFox = (): Promise<void> => {
 				meshArray.push(foxModel);
 				console.log(meshArray);
 
-				animationGroups.forEach((value, index) => {
+				animationGroups.forEach((_value, index) => {
 					animationGroups[index].stop();
 				});
 
