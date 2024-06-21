@@ -4,7 +4,7 @@
 
 -   Following repository is created using **[BabylonJS](https://www.babylonjs.com/)** (3D Javascript Library). :heart: and **[ReactJS](https://react.dev/)** :fire:
 -   This presentation is assignment specially designed by **[Metadrob](https://www.metadrob.com/)**
--   Check the Live **[Demo](https://optellix-assignment-two.vercel.app/)**. :red_circle:
+-   Check the Live **[Demo](https://metadrob-assignment.vercel.app/)**. :red_circle:
 
 #### Created by [Rushikesh Vinod Ghatage](https://www.linkedin.com/in/rushikesh-ghatage-477489222/) :smiley:
 
