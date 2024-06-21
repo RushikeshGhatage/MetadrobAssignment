@@ -61,10 +61,16 @@ export default function SceneComponent() {
 		initialize();
 	}, []);
 
+	/****************************************
+	 * Adjusts rotation speed based on user input.
+	 * @param event - Change event from input.
+	 * @param index - Index of the model.
+	 ****************************************/
 	const changeRotationSpeed = (
 		event: React.ChangeEvent<HTMLInputElement>,
 		index: number,
-	) => {
+	): void => {
+		// Ensure the rotation speed is within the allowable range (0 to 10)
 		if (Number(event.target.value) > 10) {
 			event.target.value = '10';
 			alert('Speed cannot exceed 10');
@@ -73,14 +79,14 @@ export default function SceneComponent() {
 			alert('Speed cannot be negative');
 		}
 
+		// Update the rotation speed for the specific model based on index
 		if (index === 0) {
 			robotRotationSpeed = Number(event.target.value);
 			setRobotSpeed(robotRotationSpeed);
 		} else if (index === 1) {
 			foxRotationSpeed = Number(event.target.value);
 			setFoxSpeed(foxRotationSpeed);
-		}
-		if (index === 2) {
+		} else if (index === 2) {
 			helmetRotationSpeed = Number(event.target.value);
 			setHelmetSpeed(helmetRotationSpeed);
 		}
@@ -215,19 +221,23 @@ export default function SceneComponent() {
 	);
 }
 
-const handleVisibility = (index: number) => {
+/****************************************
+ * Handles the visibility toggle for a specific model in the mesh array.
+ * @param {number} index - The index of the model in the mesh array to toggle visibility.
+ * @returns {void}
+ ****************************************/
+const handleVisibility = (index: number): void => {
 	// Check the current visibility state of the clicked model
-	const isCurrentlyVisible = meshArray[index].isEnabled();
+	const isCurrentlyVisible: boolean = meshArray[index].isEnabled();
 
 	// Hide all models
-	meshArray.forEach((mesh) => {
+	meshArray.forEach((mesh: { setEnabled: (arg0: boolean) => void }) => {
 		mesh.setEnabled(false);
 	});
 
 	// Toggle visibility of the clicked model
 	if (!isCurrentlyVisible) {
 		meshArray[index].setEnabled(true);
-		console.log(index);
 		currentlyVisibleModel = index;
 	}
 };
@@ -322,6 +332,10 @@ const loadModel = async () => {
 	await loadDamagedHelmet();
 };
 
+/****************************************
+ * Loads the Expressive Robot model.
+ * @returns Promise<void>
+ *****************************************/
 const loadRobotExpressive = (): Promise<void> => {
 	return new Promise<void>((resolve, reject) => {
 		BABYLON.SceneLoader.ImportMesh(
@@ -339,7 +353,6 @@ const loadRobotExpressive = (): Promise<void> => {
 				);
 
 				meshArray.push(robotExpressiveModel);
-				console.log(meshArray);
 
 				animationGroups.forEach((_value, index) => {
 					animationGroups[index].stop();
@@ -364,6 +377,10 @@ const loadRobotExpressive = (): Promise<void> => {
 	});
 };
 
+/****************************************
+ * Loads the Fox model.
+ * @returns Promise<void>
+ *****************************************/
 const loadFox = (): Promise<void> => {
 	return new Promise<void>((resolve, reject) => {
 		BABYLON.SceneLoader.ImportMesh(
@@ -378,7 +395,6 @@ const loadFox = (): Promise<void> => {
 				foxModel.rotation = new BABYLON.Vector3(0.0, Math.PI / 2, 0.0);
 
 				meshArray.push(foxModel);
-				console.log(meshArray);
 
 				animationGroups.forEach((_value, index) => {
 					animationGroups[index].stop();
@@ -386,6 +402,7 @@ const loadFox = (): Promise<void> => {
 
 				animationGroups[2].play(true);
 
+				// Set the mesh to be invisible
 				foxModel.setEnabled(false);
 
 				console.log('Fox model loaded successfully!');
@@ -400,6 +417,10 @@ const loadFox = (): Promise<void> => {
 	});
 };
 
+/****************************************
+ * Loads the Damaged Helmet model.
+ * @returns Promise<void>
+ *****************************************/
 const loadDamagedHelmet = (): Promise<void> => {
 	return new Promise<void>((resolve, reject) => {
 		BABYLON.SceneLoader.ImportMesh(
@@ -416,8 +437,8 @@ const loadDamagedHelmet = (): Promise<void> => {
 				);
 
 				meshArray.push(damagedHelmetModel);
-				console.log(meshArray);
 
+				// Set the mesh to be invisible
 				damagedHelmetModel.setEnabled(false);
 				console.log('Damaged Helmet model loaded successfully!');
 				resolve();
@@ -435,6 +456,9 @@ const loadDamagedHelmet = (): Promise<void> => {
 	});
 };
 
+/****************************************
+Automatically rotates the currently visible model.
+****************************************/
 const autoRotation = () => {
 	if (currentlyVisibleModel === 0) {
 		if (robotExpressiveModel.rotationQuaternion) {
