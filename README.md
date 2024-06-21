@@ -1,9 +1,10 @@
-# Project Metadrob Assignment (BabylonJS)
+# Metadrob Assignment
 
 ## Description
 
--   Following project is created using **[BabylonJS](https://www.babylonjs.com/)** (3D Javascript Library). :heart:
--   Refer **Output.png** file to see output of demo.
+-   Following repository is created using **[BabylonJS](https://www.babylonjs.com/)** (3D Javascript Library). :heart: and **[ReactJS](https://react.dev/)** :fire:
+-   This presentation is assignment specially designed by **[Metadrob](https://www.metadrob.com/)**
+-   Check the Live **[Demo](https://optellix-assignment-two.vercel.app/)**. :red_circle:
 
 #### Created by [Rushikesh Vinod Ghatage](https://www.linkedin.com/in/rushikesh-ghatage-477489222/) :smiley:
 
@@ -17,7 +18,7 @@
     ```bash
     npm install
     ```
--   To run the local server at localhost:5173
+-   To run the local server at localhost:8080
     ```bash
     npm run dev
     ```
@@ -25,3 +26,9 @@
     ```bash
     npm run build
     ```
+
+## Instructions
+
+-   Clicking a button should toggle the visibility of the associated object on the canvas.
+-   Slider will adjust the rotation speed of the corresponding object in real-time.
+-   Input fields next to each slider to allow users to directly enter specific rotation speeds.
