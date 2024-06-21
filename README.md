@@ -89,4 +89,4 @@ MetadrobAssignment/
 -   **Editable Speed Values**
     -   Provided input fields next to each slider for users to enter specific rotation speeds. Implemented input validation to prevent invalid values.
 
-#### Created by [Rushikesh Vinod Ghatage](https://www.linkedin.com/in/rushikesh-ghatage-477489222/) :smiley:
+### Created by [Rushikesh Vinod Ghatage](https://www.linkedin.com/in/rushikesh-ghatage-477489222/) :smiley:
